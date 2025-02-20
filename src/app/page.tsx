@@ -1,5 +1,5 @@
-const  = () => {
-  return ( <h1> Iniciamos os serviços</h1> );
-}
- 
+const HomePage = () => {
+  return <h1>Iniciando projeto</h1>;
+};
+
 export default HomePage;
