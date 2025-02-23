@@ -1,6 +1,19 @@
-import { db } from "@/lib/prisma";
+import { PrismaClient } from "@prisma/client";
 
-export const getRestaurantBySlug = async (slug: string) => {
-  const restaurant = await db.restaurant.findUnique({ where: { slug } });
-  return restaurant;
-};
+declare global {
+  // eslint-disable-next-line no-var
+  var cachedPrisma: PrismaClient;
+}
+
+let prisma: PrismaClient;
+if (process.env.NODE_ENV === "production") {
+  prisma = new PrismaClient();
+} else {
+  if (!global.cachedPrisma) {
+    global.cachedPrisma = new PrismaClient();
+  }
+  prisma = global.cachedPrisma;
+}
+
+// vou usar para chamar meu banco de dados
+export const db = prisma;

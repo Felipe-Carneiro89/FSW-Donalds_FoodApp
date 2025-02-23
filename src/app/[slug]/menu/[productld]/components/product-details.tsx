@@ -28,7 +28,7 @@ interface ProductDetailsProps {
 const ProductDetails = ({ product }: ProductDetailsProps) => {
   const { toggleCart, addProduct } = useContext(CartContext);
   const [quantity, setQuantity] = useState<number>(1);
-  const handleDecraseQuantity = () => {
+  const handleDecreaseQuantity = () => {
     setQuantity((prev) => {
       if (prev === 1) {
         return 1;
@@ -76,7 +76,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
               <Button
                 variant="outline"
                 className="h-8 w-8 rounded-xl"
-                onClick={handleDecraseQuantity}
+                onClick={handleDecreaseQuantity}
               >
                 <ChevronLeftIcon />
               </Button>
@@ -100,11 +100,11 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
               </p>
             </div>
 
-            {/* INGREDIENTES */}
+            {/* INGREDIENTS */}
             <div className="mt-6 space-y-3">
               <div className="5 flex items-center gap-1">
                 <ChefHatIcon size={18} />
-                <h4 className="font-semibold">Ingredients</h4>
+                <h4 className="font-semibold">Ingredientes</h4>
               </div>
               <ul className="text-muted-fo list-disc px-5 text-sm text-muted-foreground">
                 {product.ingredients.map((ingredient) => (
